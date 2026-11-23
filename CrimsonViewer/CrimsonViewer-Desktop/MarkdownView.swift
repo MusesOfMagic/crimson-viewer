@@ -2,7 +2,7 @@
 //  MarkdownView.swift
 //  CrimsonViewer
 //
-//  Created by Helga Moore on 28/09/2026.
+//  Created by Muses of Magic on 28/09/2026.
 //
 
 import SwiftUI
