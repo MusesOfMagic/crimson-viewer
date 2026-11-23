@@ -2,7 +2,7 @@
 //  AboutView.swift
 //  Crimson Viewer
 //
-//  Created by Helga Moore on 28/09/2026.
+//  Created by Muses of Magic on 28/09/2026.
 //
 
 import SwiftUI
@@ -58,7 +58,7 @@ struct AboutView: View {
                     .font(.callout)
                     .foregroundStyle(.secondary)
 
-                Text("© 2026 Helga Moore")
+                Text("© 2026 Muses of Magic")
                     .font(.caption)
                     .foregroundStyle(.tertiary)
                     .padding(.top, 8)
