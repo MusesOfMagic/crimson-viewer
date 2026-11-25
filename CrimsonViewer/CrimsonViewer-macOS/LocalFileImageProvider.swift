@@ -6,8 +6,13 @@
 //
 
 import SwiftUI
-import AppKit
 import MarkdownUI
+
+#if os(macOS)
+import AppKit
+#elseif os(iOS)
+import UIKit
+#endif
 
 struct LocalFileImageProvider: ImageProvider {
     func makeImage(url: URL?) -> some View {
@@ -36,6 +41,8 @@ private struct LocalFileImageView: View {
 
     @ViewBuilder
     private func localImage(from url: URL) -> some View {
+#if os(macOS)
+
         if let image = NSImage(contentsOf: url) {
             Image(nsImage: image)
                 .resizable()
@@ -45,8 +52,21 @@ private struct LocalFileImageView: View {
                     maxHeight: image.size.height,
                     alignment: .leading
                 )
-        } else {
-            EmptyView()
         }
+
+#elseif os(iOS)
+
+        if let image = UIImage(contentsOfFile: url.path) {
+            Image(uiImage: image)
+                .resizable()
+                .scaledToFit()
+                .frame(
+                    maxWidth: image.size.width,
+                    maxHeight: image.size.height,
+                    alignment: .leading
+                )
+        }
+
+#endif
     }
 }

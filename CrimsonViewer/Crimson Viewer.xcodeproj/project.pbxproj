@@ -8,17 +8,45 @@
 
 /* Begin PBXBuildFile section */
 		A819BBDB3069A45600DA5A9B /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = A819BBDA3069A45600DA5A9B /* MarkdownUI */; };
+		A85ECF1530B6E2FF0068A9CA /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = A85ECF1430B6E2FF0068A9CA /* MarkdownUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A819BBC530699F9F00DA5A9B /* Crimson Viewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Crimson Viewer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A819BBC530699F9F00DA5A9B /* Crimson Viewer macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Crimson Viewer macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A819BBF03069AF6500DA5A9B /* Crimson-Viewer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Crimson-Viewer-Info.plist"; sourceTree = "<group>"; };
+		A85ECF0830B6DF800068A9CA /* Crimson Viewer iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Crimson Viewer iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A85ECF1F30B6E54F0068A9CA /* Crimson-Viewer-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Crimson-Viewer-iOS-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		A85ECF1730B6E3D80068A9CA /* Exceptions for "CrimsonViewer-macOS" folder in "Crimson Viewer iOS" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				ContentView.swift,
+				CrimsonSearchActions.swift,
+				FindBar.swift,
+				LocalFileImageProvider.swift,
+				MarkdownDocument.swift,
+				MarkdownView.swift,
+				SearchModel.swift,
+				SearchTarget.swift,
+			);
+			target = A85ECF0730B6DF800068A9CA /* Crimson Viewer iOS */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		A819BBC730699F9F00DA5A9B /* CrimsonViewer-Desktop */ = {
+		A819BBC730699F9F00DA5A9B /* CrimsonViewer-macOS */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "CrimsonViewer-Desktop";
+			exceptions = (
+				A85ECF1730B6E3D80068A9CA /* Exceptions for "CrimsonViewer-macOS" folder in "Crimson Viewer iOS" target */,
+			);
+			path = "CrimsonViewer-macOS";
+			sourceTree = "<group>";
+		};
+		A85ECF0930B6DF800068A9CA /* CrimsonViewer-iOS */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "CrimsonViewer-iOS";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -30,14 +58,23 @@
 				A819BBDB3069A45600DA5A9B /* MarkdownUI in Frameworks */,
 			);
 		};
+		A85ECF0530B6DF800068A9CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+				A85ECF1530B6E2FF0068A9CA /* MarkdownUI in Frameworks */,
+			);
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		A819BBBC30699F9F00DA5A9B = {
 			isa = PBXGroup;
 			children = (
+				A85ECF1F30B6E54F0068A9CA /* Crimson-Viewer-iOS-Info.plist */,
 				A819BBF03069AF6500DA5A9B /* Crimson-Viewer-Info.plist */,
-				A819BBC730699F9F00DA5A9B /* CrimsonViewer-Desktop */,
+				A819BBC730699F9F00DA5A9B /* CrimsonViewer-macOS */,
+				A85ECF0930B6DF800068A9CA /* CrimsonViewer-iOS */,
+				A85ECF1330B6E2FF0068A9CA /* Frameworks */,
 				A819BBC630699F9F00DA5A9B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -45,17 +82,25 @@
 		A819BBC630699F9F00DA5A9B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A819BBC530699F9F00DA5A9B /* Crimson Viewer.app */,
+				A819BBC530699F9F00DA5A9B /* Crimson Viewer macOS.app */,
+				A85ECF0830B6DF800068A9CA /* Crimson Viewer iOS.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A85ECF1330B6E2FF0068A9CA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A819BBC430699F9F00DA5A9B /* Crimson Viewer */ = {
+		A819BBC430699F9F00DA5A9B /* Crimson Viewer macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A819BBD030699F9F00DA5A9B /* Build configuration list for PBXNativeTarget "Crimson Viewer" */;
+			buildConfigurationList = A819BBD030699F9F00DA5A9B /* Build configuration list for PBXNativeTarget "Crimson Viewer macOS" */;
 			buildPhases = (
 				A819BBC130699F9F00DA5A9B /* Sources */,
 				A819BBC230699F9F00DA5A9B /* Frameworks */,
@@ -64,14 +109,35 @@
 			buildRules = (
 			);
 			fileSystemSynchronizedGroups = (
-				A819BBC730699F9F00DA5A9B /* CrimsonViewer-Desktop */,
+				A819BBC730699F9F00DA5A9B /* CrimsonViewer-macOS */,
 			);
-			name = "Crimson Viewer";
+			name = "Crimson Viewer macOS";
 			packageProductDependencies = (
 				A819BBDA3069A45600DA5A9B /* MarkdownUI */,
 			);
 			productName = CrimsonViewer;
-			productReference = A819BBC530699F9F00DA5A9B /* Crimson Viewer.app */;
+			productReference = A819BBC530699F9F00DA5A9B /* Crimson Viewer macOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A85ECF0730B6DF800068A9CA /* Crimson Viewer iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A85ECF1030B6DF810068A9CA /* Build configuration list for PBXNativeTarget "Crimson Viewer iOS" */;
+			buildPhases = (
+				A85ECF0430B6DF800068A9CA /* Sources */,
+				A85ECF0530B6DF800068A9CA /* Frameworks */,
+				A85ECF0630B6DF800068A9CA /* Resources */,
+			);
+			buildRules = (
+			);
+			fileSystemSynchronizedGroups = (
+				A85ECF0930B6DF800068A9CA /* CrimsonViewer-iOS */,
+			);
+			name = "Crimson Viewer iOS";
+			packageProductDependencies = (
+				A85ECF1430B6E2FF0068A9CA /* MarkdownUI */,
+			);
+			productName = "CrimsonViewer iOS";
+			productReference = A85ECF0830B6DF800068A9CA /* Crimson Viewer iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -81,11 +147,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 2700;
+				LastSwiftUpdateCheck = 2720;
 				LastUpgradeCheck = 2700;
 				TargetAttributes = {
 					A819BBC430699F9F00DA5A9B = {
 						CreatedOnToolsVersion = 27.0;
+					};
+					A85ECF0730B6DF800068A9CA = {
+						CreatedOnToolsVersion = 27.2;
 					};
 				};
 			};
@@ -106,7 +175,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A819BBC430699F9F00DA5A9B /* Crimson Viewer */,
+				A819BBC430699F9F00DA5A9B /* Crimson Viewer macOS */,
+				A85ECF0730B6DF800068A9CA /* Crimson Viewer iOS */,
 			);
 		};
 /* End PBXProject section */
@@ -117,10 +187,20 @@
 			files = (
 			);
 		};
+		A85ECF0630B6DF800068A9CA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+			);
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A819BBC130699F9F00DA5A9B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+			);
+		};
+		A85ECF0430B6DF800068A9CA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			files = (
 			);
@@ -248,7 +328,7 @@
 			};
 			name = Release;
 		};
-		A819BBD130699F9F00DA5A9B /* Debug configuration for PBXNativeTarget "Crimson Viewer" */ = {
+		A819BBD130699F9F00DA5A9B /* Debug configuration for PBXNativeTarget "Crimson Viewer macOS" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -282,7 +362,7 @@
 			};
 			name = Debug;
 		};
-		A819BBD230699F9F00DA5A9B /* Release configuration for PBXNativeTarget "Crimson Viewer" */ = {
+		A819BBD230699F9F00DA5A9B /* Release configuration for PBXNativeTarget "Crimson Viewer macOS" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -316,6 +396,91 @@
 			};
 			name = Release;
 		};
+		A85ECF1130B6DF810068A9CA /* Debug configuration for PBXNativeTarget "Crimson Viewer iOS" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JSMR47XN6Z;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Crimson-Viewer-iOS-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Crimson Viewer";
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportsDocumentBrowser = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.musesofmagic.CrimsonViewer-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A85ECF1230B6DF810068A9CA /* Release configuration for PBXNativeTarget "Crimson Viewer iOS" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JSMR47XN6Z;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Crimson-Viewer-iOS-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Crimson Viewer";
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportsDocumentBrowser = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.musesofmagic.CrimsonViewer-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -327,11 +492,19 @@
 			);
 			defaultConfigurationName = Release;
 		};
-		A819BBD030699F9F00DA5A9B /* Build configuration list for PBXNativeTarget "Crimson Viewer" */ = {
+		A819BBD030699F9F00DA5A9B /* Build configuration list for PBXNativeTarget "Crimson Viewer macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A819BBD130699F9F00DA5A9B /* Debug configuration for PBXNativeTarget "Crimson Viewer" */,
-				A819BBD230699F9F00DA5A9B /* Release configuration for PBXNativeTarget "Crimson Viewer" */,
+				A819BBD130699F9F00DA5A9B /* Debug configuration for PBXNativeTarget "Crimson Viewer macOS" */,
+				A819BBD230699F9F00DA5A9B /* Release configuration for PBXNativeTarget "Crimson Viewer macOS" */,
+			);
+			defaultConfigurationName = Release;
+		};
+		A85ECF1030B6DF810068A9CA /* Build configuration list for PBXNativeTarget "Crimson Viewer iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A85ECF1130B6DF810068A9CA /* Debug configuration for PBXNativeTarget "Crimson Viewer iOS" */,
+				A85ECF1230B6DF810068A9CA /* Release configuration for PBXNativeTarget "Crimson Viewer iOS" */,
 			);
 			defaultConfigurationName = Release;
 		};
@@ -350,6 +523,11 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		A819BBDA3069A45600DA5A9B /* MarkdownUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A819BBD93069A45600DA5A9B /* XCRemoteSwiftPackageReference "swift-markdown-ui" */;
+			productName = MarkdownUI;
+		};
+		A85ECF1430B6E2FF0068A9CA /* MarkdownUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A819BBD93069A45600DA5A9B /* XCRemoteSwiftPackageReference "swift-markdown-ui" */;
 			productName = MarkdownUI;

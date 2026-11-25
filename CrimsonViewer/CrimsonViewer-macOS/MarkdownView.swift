@@ -92,25 +92,6 @@ struct MarkdownView: View {
                     alignment: .leading
                 )
                 .padding(32)
-                .markdownBlockStyle(\.paragraph) { configuration in
-                    let highlighted = isSearchMatch(
-                        configuration.content.renderPlainText()
-                    )
-
-                    configuration.label
-                        .fixedSize(horizontal: false, vertical: true)
-                        .relativeLineSpacing(.em(0.25))
-                        .padding(.horizontal, highlighted ? 4 : 0)
-                        .background {
-                            if highlighted {
-                                RoundedRectangle(cornerRadius: 5)
-                                    .fill(
-                                        Color.accentColor.opacity(0.16)
-                                    )
-                            }
-                        }
-                        .markdownMargin(top: 0, bottom: 16)
-                }
                 .onPreferenceChange(SearchMatchPreferenceKey.self) { blockIDs in
                     guard
                         search.isPresented,

@@ -67,8 +67,19 @@ struct FindBar: View {
         .onChange(of: search.query) {
             search.search(in: document)
         }
-        .onExitCommand {
+        .closeSearchOnExit {
             search.close()
         }
+    }
+}
+
+private extension View {
+    @ViewBuilder
+    func closeSearchOnExit(_ action: @escaping () -> Void) -> some View {
+#if os(macOS)
+        self.onExitCommand(perform: action)
+#else
+        self
+#endif
     }
 }

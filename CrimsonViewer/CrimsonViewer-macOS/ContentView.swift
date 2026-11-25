@@ -13,22 +13,18 @@ struct ContentView: View {
 
     @Environment(\.documentConfiguration)
     private var documentConfiguration
-    
-    @Environment(\.openDocument) private var openDocument
+
+#if os(macOS)
+    @Environment(\.openDocument)
+    private var openDocument
 
     @State private var isDropTargeted = false
     @State private var dropError: String?
+#endif
 
     var body: some View {
-        MarkdownView(markdown: document.text,
-                     baseURL: documentConfiguration?
-                        .fileURL?
-                        .deletingLastPathComponent()
-                    )
-            .frame(
-                maxWidth: .infinity,
-                maxHeight: .infinity
-            )
+#if os(macOS)
+        markdownView
             .overlay {
                 if isDropTargeted {
                     RoundedRectangle(cornerRadius: 10)
@@ -64,7 +60,11 @@ struct ContentView: View {
                 "Unable to Open File",
                 isPresented: Binding(
                     get: { dropError != nil },
-                    set: { if !$0 { dropError = nil } }
+                    set: {
+                        if !$0 {
+                            dropError = nil
+                        }
+                    }
                 )
             ) {
                 Button("OK") {
@@ -73,8 +73,25 @@ struct ContentView: View {
             } message: {
                 Text(dropError ?? "")
             }
+#else
+        markdownView
+#endif
     }
 
+    private var markdownView: some View {
+        MarkdownView(
+            markdown: document.text,
+            baseURL: documentConfiguration?
+                .fileURL?
+                .deletingLastPathComponent()
+        )
+        .frame(
+            maxWidth: .infinity,
+            maxHeight: .infinity
+        )
+    }
+
+#if os(macOS)
     private func openDroppedFiles(_ urls: [URL]) {
         let markdownFiles = urls.filter(isMarkdownFile)
 
@@ -104,4 +121,5 @@ struct ContentView: View {
         return ["md", "markdown"]
             .contains(url.pathExtension.lowercased())
     }
+#endif
 }
