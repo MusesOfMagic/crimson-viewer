@@ -104,22 +104,29 @@ struct ContentView: View {
                 print("[FolderAccess] Error: \(error)")
             }
         }
+        .task(id: documentFolderURL) {
+            restoreFolderAccess()
+        }
 #endif
+    }
+    
+    private var documentFolderURL: URL? {
+        documentConfiguration?
+            .fileURL?
+            .deletingLastPathComponent()
     }
 
     private var markdownView: some View {
         MarkdownView(
             markdown: document.text,
-            baseURL: documentConfiguration?
-                .fileURL?
-                .deletingLastPathComponent()
+            baseURL: documentFolderURL
         )
         .frame(
             maxWidth: .infinity,
             maxHeight: .infinity
         )
     }
-
+    
 #if os(macOS)
     private func openDroppedFiles(_ urls: [URL]) {
         let markdownFiles = urls.filter(isMarkdownFile)
@@ -161,7 +168,24 @@ struct ContentView: View {
 
         folderAccess = access
 
-        print("[FolderAccess] Granted: \(url.path)")
+        do {
+            try FolderAccessManager.remember(access)
+        } catch {
+            print("[FolderAccess] Unable to save bookmark: \(error)")
+        }
+    }
+#endif
+    
+#if os(iOS)
+    private func restoreFolderAccess() {
+        guard let directory = documentFolderURL else {
+            folderAccess = nil
+            return
+        }
+
+        folderAccess = FolderAccessManager.restore(
+            for: directory
+        )
     }
 #endif
 }

@@ -34,6 +34,13 @@
 			);
 			target = A85ECF0730B6DF800068A9CA /* Crimson Viewer iOS */;
 		};
+		A8E81EFA30B996F500B2B5A2 /* Exceptions for "CrimsonViewer-iOS" folder in "Crimson Viewer macOS" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				FolderAccessManager.swift,
+			);
+			target = A819BBC430699F9F00DA5A9B /* Crimson Viewer macOS */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -47,6 +54,9 @@
 		};
 		A85ECF0930B6DF800068A9CA /* CrimsonViewer-iOS */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A8E81EFA30B996F500B2B5A2 /* Exceptions for "CrimsonViewer-iOS" folder in "Crimson Viewer macOS" target */,
+			);
 			path = "CrimsonViewer-iOS";
 			sourceTree = "<group>";
 		};
