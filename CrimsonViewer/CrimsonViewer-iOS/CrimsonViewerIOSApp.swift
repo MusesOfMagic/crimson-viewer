@@ -15,8 +15,5 @@ struct CrimsonViewerIOSApp: App {
         } makeReadableDocument: { _, _ in
             MarkdownDocument()
         }
-        .commands {
-            SearchCommands()
-        }
     }
 }

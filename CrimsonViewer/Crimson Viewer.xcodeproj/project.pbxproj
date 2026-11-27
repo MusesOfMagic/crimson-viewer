@@ -25,6 +25,7 @@
 				ContentView.swift,
 				CrimsonSearchActions.swift,
 				FindBar.swift,
+				ImageFolderAccess.swift,
 				LocalFileImageProvider.swift,
 				MarkdownDocument.swift,
 				MarkdownView.swift,

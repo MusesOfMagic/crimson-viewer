@@ -56,17 +56,53 @@ private struct LocalFileImageView: View {
 
 #elseif os(iOS)
 
-        if let image = UIImage(contentsOfFile: url.path) {
-            Image(uiImage: image)
-                .resizable()
-                .scaledToFit()
-                .frame(
-                    maxWidth: image.size.width,
-                    maxHeight: image.size.height,
-                    alignment: .leading
-                )
-        }
+    if let image = loadLocalImage(from: url) {
+        Image(uiImage: image)
+            .resizable()
+            .scaledToFit()
+            .frame(
+                maxWidth: image.size.width,
+                maxHeight: image.size.height,
+                alignment: .leading
+            )
+    } else {
+        Label(
+            "Unable to load \(url.lastPathComponent)",
+            systemImage: "photo.badge.exclamationmark"
+        )
+        .font(.caption)
+        .foregroundStyle(.secondary)
+        .padding()
+    }
 
 #endif
     }
 }
+
+#if os(iOS)
+private func loadLocalImage(from url: URL) -> UIImage? {
+    var coordinationError: NSError?
+    var image: UIImage?
+
+    let coordinator = NSFileCoordinator()
+
+    coordinator.coordinate(
+        readingItemAt: url,
+        options: [],
+        error: &coordinationError
+    ) { coordinatedURL in
+        do {
+            let data = try Data(contentsOf: coordinatedURL)
+            image = UIImage(data: data)
+        } catch {
+            print("[ImageProvider] Error: \(error)")
+        }
+    }
+
+    if let coordinationError {
+        print("[ImageProvider] \(coordinationError)")
+    }
+
+    return image
+}
+#endif

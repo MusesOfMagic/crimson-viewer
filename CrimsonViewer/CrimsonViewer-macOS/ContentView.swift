@@ -14,6 +14,11 @@ struct ContentView: View {
     @Environment(\.documentConfiguration)
     private var documentConfiguration
 
+#if os(iOS)
+    @State private var isFolderPickerPresented = false
+    @State private var folderAccess: ImageFolderAccess?
+#endif
+    
 #if os(macOS)
     @Environment(\.openDocument)
     private var openDocument
@@ -74,7 +79,31 @@ struct ContentView: View {
                 Text(dropError ?? "")
             }
 #else
-        markdownView
+    markdownView
+        .id(folderAccess?.id)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    isFolderPickerPresented = true
+                } label: {
+                    Image(systemName: "folder.badge.plus")
+                }
+                .help("Grant Folder Access")
+                .accessibilityLabel("Grant Folder Access")
+            }
+        }
+        .fileImporter(
+            isPresented: $isFolderPickerPresented,
+            allowedContentTypes: [.folder]
+        ) { result in
+            switch result {
+            case .success(let url):
+                grantFolderAccess(url)
+
+            case .failure(let error):
+                print("[FolderAccess] Error: \(error)")
+            }
+        }
 #endif
     }
 
@@ -120,6 +149,19 @@ struct ContentView: View {
 
         return ["md", "markdown"]
             .contains(url.pathExtension.lowercased())
+    }
+#endif
+    
+#if os(iOS)
+    private func grantFolderAccess(_ url: URL) {
+        guard let access = ImageFolderAccess(url: url) else {
+            print("[FolderAccess] Permission denied")
+            return
+        }
+
+        folderAccess = access
+
+        print("[FolderAccess] Granted: \(url.path)")
     }
 #endif
 }
